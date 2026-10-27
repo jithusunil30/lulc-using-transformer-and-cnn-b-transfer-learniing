@@ -1,0 +1,6 @@
+model_family,model_arch,strategy,seed,test_accuracy,test_macro_f1,test_balanced_acc,test_loss,trainable_params,total_params,trainable_pct,best_epoch,total_wall_time,avg_epoch_seconds,peak_vram_mb
+CNN (ConvNeXt-Tiny),convnext_tiny.fb_in22k_ft_in1k,scratch,42,44.91,0.437,44.63,1.535,27827818,27827818,100.0,3,529.71,120.22,2351.6
+CNN (ConvNeXt-Tiny),convnext_tiny.fb_in22k_ft_in1k,linear_probe,42,95.46,0.9525,95.31,0.1464,9226,27827818,0.03,4,269.68,56.13,761.5
+CNN (ConvNeXt-Tiny),convnext_tiny.fb_in22k_ft_in1k,unfreeze_last_2,42,96.72,0.9661,96.58,0.1003,9535498,27827818,34.27,4,277.02,58.05,625.1
+CNN (ConvNeXt-Tiny),convnext_tiny.fb_in22k_ft_in1k,unfreeze_last_3,42,97.16,0.9702,97.05,0.0905,14298634,27827818,51.38,4,270.95,57.17,663.1
+CNN (ConvNeXt-Tiny),convnext_tiny.fb_in22k_ft_in1k,full_ft,42,98.15,0.9813,98.16,0.0628,27827818,27827818,100.0,4,475.31,107.76,2355.4

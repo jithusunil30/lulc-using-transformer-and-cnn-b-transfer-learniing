@@ -1,0 +1,76 @@
+{
+  "phase": 1,
+  "status": "COMPLETED",
+  "timestamp": "2026-10-21T17:15:59",
+  "hardware": {
+    "cuda_available": true,
+    "device": "cuda",
+    "device_name": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "vram_gb": 6.0
+  },
+  "dataset": {
+    "name": "EuroSAT_RGB",
+    "total_images": 27000,
+    "classes": [
+      "AnnualCrop",
+      "Forest",
+      "HerbaceousVegetation",
+      "Highway",
+      "Industrial",
+      "Pasture",
+      "PermanentCrop",
+      "Residential",
+      "River",
+      "SeaLake"
+    ],
+    "splits": {
+      "train": 18899,
+      "val": 4051,
+      "test": 4050
+    },
+    "split_ratios": {
+      "train": 0.7,
+      "val": 0.15,
+      "test": 0.15
+    },
+    "seed": 42,
+    "zero_overlap_verified": true,
+    "splits_json_path": "C:\\Users\\USER\\OneDrive\\Desktop\\DEEP LEARNING\\project\\data\\splits.json"
+  },
+  "transforms": {
+    "image_size": 224,
+    "mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "std": [
+      0.229,
+      0.224,
+      0.225
+    ],
+    "train_augmentations": [
+      "Resize(224)",
+      "RandomHorizontalFlip(0.5)",
+      "RandomVerticalFlip(0.5)",
+      "RandomRot90",
+      "ToTensor",
+      "Normalize"
+    ],
+    "eval_augmentations": [
+      "Resize(224)",
+      "ToTensor",
+      "Normalize"
+    ]
+  },
+  "benchmark": {
+    "device": "cuda",
+    "device_name": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "batch_size": 16,
+    "num_workers": 2,
+    "batches_timed": 60,
+    "images_timed": 976,
+    "elapsed_seconds": 6.1239,
+    "throughput_images_per_sec": 159.37
+  }
+}

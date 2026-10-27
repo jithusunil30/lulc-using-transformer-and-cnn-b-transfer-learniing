@@ -1,0 +1,193 @@
+{
+  "phase": 9,
+  "coarse_classes": [
+    "Forest",
+    "Crop",
+    "Water",
+    "Built",
+    "Grass/Shrub"
+  ],
+  "models_evaluated": [
+    "vit",
+    "deit",
+    "swin"
+  ],
+  "strategies_evaluated": [
+    "scratch",
+    "linear_probe",
+    "unfreeze_last_2",
+    "unfreeze_last_3",
+    "full_ft"
+  ],
+  "seeds_evaluated": [
+    42
+  ],
+  "num_eval_records": 15,
+  "overall_summary": [
+    {
+      "model_family": "ViT",
+      "strategy": "scratch",
+      "trainable_pct": 100.0,
+      "eurosat_accuracy": 86.79,
+      "europe_dw_accuracy": 40.6,
+      "india_dw_accuracy": 40.2,
+      "india_dw_noise_corrected_accuracy": 44.16,
+      "drop_label_sensor_pct": -46.19,
+      "drop_geographic_pct": -0.4
+    },
+    {
+      "model_family": "ViT",
+      "strategy": "linear_probe",
+      "trainable_pct": 0.02,
+      "eurosat_accuracy": 96.81,
+      "europe_dw_accuracy": 37.33,
+      "india_dw_accuracy": 36.95,
+      "india_dw_noise_corrected_accuracy": 40.58,
+      "drop_label_sensor_pct": -59.48,
+      "drop_geographic_pct": -0.38
+    },
+    {
+      "model_family": "ViT",
+      "strategy": "unfreeze_last_2",
+      "trainable_pct": 16.4,
+      "eurosat_accuracy": 95.65,
+      "europe_dw_accuracy": 39.67,
+      "india_dw_accuracy": 39.5,
+      "india_dw_noise_corrected_accuracy": 43.39,
+      "drop_label_sensor_pct": -55.98,
+      "drop_geographic_pct": -0.17
+    },
+    {
+      "model_family": "ViT",
+      "strategy": "unfreeze_last_3",
+      "trainable_pct": 24.59,
+      "eurosat_accuracy": 98.42,
+      "europe_dw_accuracy": 24.27,
+      "india_dw_accuracy": 25.15,
+      "india_dw_noise_corrected_accuracy": 27.62,
+      "drop_label_sensor_pct": -74.15,
+      "drop_geographic_pct": 0.88
+    },
+    {
+      "model_family": "ViT",
+      "strategy": "full_ft",
+      "trainable_pct": 100.0,
+      "eurosat_accuracy": 99.53,
+      "europe_dw_accuracy": 30.8,
+      "india_dw_accuracy": 31.2,
+      "india_dw_noise_corrected_accuracy": 34.27,
+      "drop_label_sensor_pct": -68.73,
+      "drop_geographic_pct": 0.4
+    },
+    {
+      "model_family": "DeiT",
+      "strategy": "scratch",
+      "trainable_pct": 100.0,
+      "eurosat_accuracy": 86.77,
+      "europe_dw_accuracy": 40.53,
+      "india_dw_accuracy": 40.2,
+      "india_dw_noise_corrected_accuracy": 44.16,
+      "drop_label_sensor_pct": -46.24,
+      "drop_geographic_pct": -0.33
+    },
+    {
+      "model_family": "DeiT",
+      "strategy": "linear_probe",
+      "trainable_pct": 0.02,
+      "eurosat_accuracy": 95.31,
+      "europe_dw_accuracy": 30.27,
+      "india_dw_accuracy": 30.7,
+      "india_dw_noise_corrected_accuracy": 33.72,
+      "drop_label_sensor_pct": -65.04,
+      "drop_geographic_pct": 0.43
+    },
+    {
+      "model_family": "DeiT",
+      "strategy": "unfreeze_last_2",
+      "trainable_pct": 16.4,
+      "eurosat_accuracy": 97.7,
+      "europe_dw_accuracy": 21.07,
+      "india_dw_accuracy": 21.1,
+      "india_dw_noise_corrected_accuracy": 23.17,
+      "drop_label_sensor_pct": -76.63,
+      "drop_geographic_pct": 0.03
+    },
+    {
+      "model_family": "DeiT",
+      "strategy": "unfreeze_last_3",
+      "trainable_pct": 24.59,
+      "eurosat_accuracy": 97.9,
+      "europe_dw_accuracy": 24.2,
+      "india_dw_accuracy": 23.8,
+      "india_dw_noise_corrected_accuracy": 26.13,
+      "drop_label_sensor_pct": -73.7,
+      "drop_geographic_pct": -0.4
+    },
+    {
+      "model_family": "DeiT",
+      "strategy": "full_ft",
+      "trainable_pct": 100.0,
+      "eurosat_accuracy": 99.38,
+      "europe_dw_accuracy": 20.0,
+      "india_dw_accuracy": 20.0,
+      "india_dw_noise_corrected_accuracy": 21.96,
+      "drop_label_sensor_pct": -79.38,
+      "drop_geographic_pct": 0.0
+    },
+    {
+      "model_family": "Swin",
+      "strategy": "scratch",
+      "trainable_pct": 100.0,
+      "eurosat_accuracy": 88.84,
+      "europe_dw_accuracy": 49.87,
+      "india_dw_accuracy": 49.8,
+      "india_dw_noise_corrected_accuracy": 54.71,
+      "drop_label_sensor_pct": -38.97,
+      "drop_geographic_pct": -0.07
+    },
+    {
+      "model_family": "Swin",
+      "strategy": "linear_probe",
+      "trainable_pct": 0.03,
+      "eurosat_accuracy": 96.96,
+      "europe_dw_accuracy": 34.8,
+      "india_dw_accuracy": 34.7,
+      "india_dw_noise_corrected_accuracy": 38.11,
+      "drop_label_sensor_pct": -62.16,
+      "drop_geographic_pct": -0.1
+    },
+    {
+      "model_family": "Swin",
+      "strategy": "unfreeze_last_2",
+      "trainable_pct": 51.56,
+      "eurosat_accuracy": 98.44,
+      "europe_dw_accuracy": 37.13,
+      "india_dw_accuracy": 38.3,
+      "india_dw_noise_corrected_accuracy": 42.07,
+      "drop_label_sensor_pct": -61.31,
+      "drop_geographic_pct": 1.17
+    },
+    {
+      "model_family": "Swin",
+      "strategy": "unfreeze_last_3",
+      "trainable_pct": 58.01,
+      "eurosat_accuracy": 98.59,
+      "europe_dw_accuracy": 44.73,
+      "india_dw_accuracy": 45.35,
+      "india_dw_noise_corrected_accuracy": 49.82,
+      "drop_label_sensor_pct": -53.86,
+      "drop_geographic_pct": 0.62
+    },
+    {
+      "model_family": "Swin",
+      "strategy": "full_ft",
+      "trainable_pct": 100.0,
+      "eurosat_accuracy": 99.36,
+      "europe_dw_accuracy": 37.6,
+      "india_dw_accuracy": 37.35,
+      "india_dw_noise_corrected_accuracy": 41.02,
+      "drop_label_sensor_pct": -61.76,
+      "drop_geographic_pct": -0.25
+    }
+  ]
+}

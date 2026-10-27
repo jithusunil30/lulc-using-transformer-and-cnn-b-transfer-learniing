@@ -1,0 +1,7 @@
+model_family,comparison,scratch_acc,comparison_acc,accuracy_difference_pct,scratch_sec_per_epoch,comparison_sec_per_epoch,sec_per_epoch_delta,sec_per_epoch_ratio,scratch_time_to_best_sec,comparison_time_to_best_sec,time_to_best_ratio,is_per_epoch_reduced,is_total_convergence_reduced
+DeiT,Full_FT vs Scratch,82.49,98.42,15.93,51.96,52.12,0.16,1.003,311.76,260.6,0.836,False,True
+DeiT,Unfreeze_Last_3 vs Full_FT,98.42,96.81,-1.61,52.12,25.19,-26.93,0.483,260.6,151.14,0.58,True,True
+Swin,Full_FT vs Scratch,84.72,98.72,14.0,196.4,150.16,-46.24,0.765,1178.4,900.96,0.765,True,True
+Swin,Unfreeze_Last_3 vs Full_FT,98.72,97.63,-1.09,150.16,122.32,-27.84,0.815,900.96,611.6,0.679,True,True
+ViT,Full_FT vs Scratch,82.49,98.96,16.47,51.35,52.3,0.95,1.019,308.1,261.5,0.849,False,True
+ViT,Unfreeze_Last_3 vs Full_FT,98.96,97.48,-1.48,52.3,24.42,-27.88,0.467,261.5,244.2,0.934,True,True

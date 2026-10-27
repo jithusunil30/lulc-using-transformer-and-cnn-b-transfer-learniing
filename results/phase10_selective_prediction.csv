@@ -1,0 +1,16 @@
+model_family,model_arch,strategy,seed,in_domain_aurc,in_domain_auacc,in_domain_acc_cov100,in_domain_acc_cov90,in_domain_acc_cov80,in_domain_acc_cov50,in_domain_cov_at_95acc,shifted_aurc,shifted_auacc,shifted_acc_cov100,shifted_acc_cov90,shifted_acc_cov80,shifted_acc_cov50,shifted_cov_at_90acc,shifted_cov_at_95acc
+VIT,vit_small_patch16_224.augreg_in21k,scratch,42,0.0334,0.9566,86.67,90.21,93.64,98.02,73.27,0.5381,0.4519,40.2,43.17,39.38,40.0,,
+VIT,vit_small_patch16_224.augreg_in21k,linear_probe,42,0.0023,0.9877,96.77,99.37,99.81,99.95,100.0,0.6084,0.3816,36.95,39.67,41.5,44.9,,
+VIT,vit_small_patch16_224.augreg_in21k,unfreeze_last_2,42,0.0041,0.9859,95.51,98.66,99.44,99.9,100.0,0.4616,0.5284,39.5,43.44,47.62,56.4,,
+VIT,vit_small_patch16_224.augreg_in21k,unfreeze_last_3,42,0.0006,0.9894,98.44,99.86,99.94,100.0,100.0,0.7926,0.1974,25.2,24.78,24.19,22.0,,
+VIT,vit_small_patch16_224.augreg_in21k,full_ft,42,0.0002,0.9898,99.53,99.95,99.97,100.0,100.0,0.4235,0.5665,31.3,33.39,36.62,44.7,21.79,20.8
+DEIT,deit_small_patch16_224.fb_in1k,scratch,42,0.0334,0.9566,86.67,90.23,93.64,98.07,73.27,0.538,0.452,40.2,43.17,39.38,40.0,,
+DEIT,deit_small_patch16_224.fb_in1k,linear_probe,42,0.0052,0.9848,95.28,98.49,99.41,99.85,100.0,0.4482,0.5418,30.8,31.72,33.81,43.7,16.84,13.87
+DEIT,deit_small_patch16_224.fb_in1k,unfreeze_last_2,42,0.0013,0.9887,97.7,99.59,99.91,99.95,100.0,0.4766,0.5134,21.1,22.83,25.25,40.0,21.79,20.8
+DEIT,deit_small_patch16_224.fb_in1k,unfreeze_last_3,42,0.0011,0.9889,97.9,99.67,99.97,99.95,100.0,0.47,0.52,23.75,24.83,26.56,40.4,21.79,20.8
+DEIT,deit_small_patch16_224.fb_in1k,full_ft,42,0.0002,0.9898,99.38,99.95,100.0,100.0,100.0,0.8182,0.1718,20.0,21.72,22.81,21.4,,
+SWIN,swin_tiny_patch4_window7_224.ms_in22k,scratch,42,0.0223,0.9677,88.86,92.92,95.86,99.11,83.17,0.3335,0.6565,49.8,45.5,49.12,69.9,10.9,9.91
+SWIN,swin_tiny_patch4_window7_224.ms_in22k,linear_probe,42,0.0025,0.9875,96.94,99.4,99.69,99.9,100.0,0.5526,0.4374,34.7,31.72,28.88,37.0,5.95,3.97
+SWIN,swin_tiny_patch4_window7_224.ms_in22k,unfreeze_last_2,42,0.0008,0.9892,98.44,99.84,99.88,100.0,100.0,0.4444,0.5456,38.3,37.5,37.0,40.0,18.82,16.84
+SWIN,swin_tiny_patch4_window7_224.ms_in22k,unfreeze_last_3,42,0.0006,0.9894,98.62,99.84,99.97,100.0,100.0,0.4124,0.5776,45.45,44.44,43.06,41.1,20.8,18.82
+SWIN,swin_tiny_patch4_window7_224.ms_in22k,full_ft,42,0.0002,0.9898,99.36,99.95,100.0,100.0,100.0,0.5022,0.4878,37.35,33.22,25.37,40.0,1.99,1.0

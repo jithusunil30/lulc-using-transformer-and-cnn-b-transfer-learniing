@@ -1,0 +1,10 @@
+model_family,model_name,strategy,feature_dim,feature_space_silhouette_score,tsne_2d_silhouette_score
+VIT,vit_small_patch16_224.augreg_in21k,scratch,384,0.1537,0.1533
+VIT,vit_small_patch16_224.augreg_in21k,unfreeze_last_3,384,0.1622,0.6377
+VIT,vit_small_patch16_224.augreg_in21k,full_ft,384,0.35,0.7397
+DEIT,deit_small_patch16_224.fb_in1k,scratch,384,0.1537,0.1532
+DEIT,deit_small_patch16_224.fb_in1k,unfreeze_last_3,384,0.1322,0.5462
+DEIT,deit_small_patch16_224.fb_in1k,full_ft,384,0.3722,0.7406
+SWIN,swin_tiny_patch4_window7_224.ms_in22k,scratch,768,0.1102,0.0843
+SWIN,swin_tiny_patch4_window7_224.ms_in22k,unfreeze_last_3,768,0.1739,0.6102
+SWIN,swin_tiny_patch4_window7_224.ms_in22k,full_ft,768,0.2629,0.7021

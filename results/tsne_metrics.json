@@ -1,0 +1,74 @@
+[
+  {
+    "model_family": "VIT",
+    "model_name": "vit_small_patch16_224.augreg_in21k",
+    "strategy": "scratch",
+    "feature_dim": 384,
+    "feature_space_silhouette_score": 0.1537,
+    "tsne_2d_silhouette_score": 0.1533
+  },
+  {
+    "model_family": "VIT",
+    "model_name": "vit_small_patch16_224.augreg_in21k",
+    "strategy": "unfreeze_last_3",
+    "feature_dim": 384,
+    "feature_space_silhouette_score": 0.1622,
+    "tsne_2d_silhouette_score": 0.6377
+  },
+  {
+    "model_family": "VIT",
+    "model_name": "vit_small_patch16_224.augreg_in21k",
+    "strategy": "full_ft",
+    "feature_dim": 384,
+    "feature_space_silhouette_score": 0.35,
+    "tsne_2d_silhouette_score": 0.7397
+  },
+  {
+    "model_family": "DEIT",
+    "model_name": "deit_small_patch16_224.fb_in1k",
+    "strategy": "scratch",
+    "feature_dim": 384,
+    "feature_space_silhouette_score": 0.1537,
+    "tsne_2d_silhouette_score": 0.1532
+  },
+  {
+    "model_family": "DEIT",
+    "model_name": "deit_small_patch16_224.fb_in1k",
+    "strategy": "unfreeze_last_3",
+    "feature_dim": 384,
+    "feature_space_silhouette_score": 0.1322,
+    "tsne_2d_silhouette_score": 0.5462
+  },
+  {
+    "model_family": "DEIT",
+    "model_name": "deit_small_patch16_224.fb_in1k",
+    "strategy": "full_ft",
+    "feature_dim": 384,
+    "feature_space_silhouette_score": 0.3722,
+    "tsne_2d_silhouette_score": 0.7406
+  },
+  {
+    "model_family": "SWIN",
+    "model_name": "swin_tiny_patch4_window7_224.ms_in22k",
+    "strategy": "scratch",
+    "feature_dim": 768,
+    "feature_space_silhouette_score": 0.1102,
+    "tsne_2d_silhouette_score": 0.0843
+  },
+  {
+    "model_family": "SWIN",
+    "model_name": "swin_tiny_patch4_window7_224.ms_in22k",
+    "strategy": "unfreeze_last_3",
+    "feature_dim": 768,
+    "feature_space_silhouette_score": 0.1739,
+    "tsne_2d_silhouette_score": 0.6102
+  },
+  {
+    "model_family": "SWIN",
+    "model_name": "swin_tiny_patch4_window7_224.ms_in22k",
+    "strategy": "full_ft",
+    "feature_dim": 768,
+    "feature_space_silhouette_score": 0.2629,
+    "tsne_2d_silhouette_score": 0.7021
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "claim_evaluated": "Transfer learning reduces computational cost",
+  "scientific_verdict": "PARTIALLY TRUE (Nuanced): Transfer learning reduces TOTAL convergence time and sample complexity, but does NOT reduce per-epoch compute or forward/backward FLOPs for full fine-tuning. Genuine per-epoch computational reduction is only achieved via partial fine-tuning (layer freezing).",
+  "key_findings": [
+    "Finding 1: Full Fine-Tuning vs Scratch: FLOPs and forward-backward compute per step are mathematically identical. Time per epoch is comparable (within ~5-10% GPU variance). Thus, transfer learning does NOT make individual epochs faster.",
+    "Finding 2: Convergence Acceleration: Transfer learning dramatically accelerates convergence rate (reaching >95% accuracy in 1-2 epochs, whereas scratch reaches only ~82-84% after 6 epochs). Total wall-clock time to achieve state-of-the-art accuracy is slashed.",
+    "Finding 3: Partial Fine-Tuning Genuine Cost Reduction: Freezing initial layers truncates the backward pass and avoids optimizer momentum updates for frozen parameters. Unfreezing only the last 3 blocks slashes trainable parameters by 75.4% (ViT) and reduces per-epoch training time by ~30-50% while retaining >97.4% test accuracy."
+  ]
+}

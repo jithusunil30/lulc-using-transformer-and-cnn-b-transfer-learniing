@@ -1,0 +1,165 @@
+{
+  "project_title": "Efficiency-Accuracy Trade-offs of Partial Fine-Tuning in Vision Transformers for LULC",
+  "phase": "PHASE 8 - Geographic Shift Evaluation Set",
+  "coarse_classes": [
+    "Forest",
+    "Crop",
+    "Water",
+    "Built",
+    "Grass/Shrub"
+  ],
+  "eurosat_to_coarse": {
+    "AnnualCrop": "Crop",
+    "Forest": "Forest",
+    "HerbaceousVegetation": "Grass/Shrub",
+    "Highway": "Built",
+    "Industrial": "Built",
+    "Pasture": "Grass/Shrub",
+    "PermanentCrop": "Crop",
+    "Residential": "Built",
+    "River": "Water",
+    "SeaLake": "Water"
+  },
+  "eurosat_coarse_distribution": {
+    "Crop": ["AnnualCrop", "PermanentCrop"],
+    "Forest": ["Forest"],
+    "Grass/Shrub": ["HerbaceousVegetation", "Pasture"],
+    "Built": ["Highway", "Industrial", "Residential"],
+    "Water": ["River", "SeaLake"]
+  },
+  "dynamic_world_to_coarse": {
+    "0": {
+      "name": "water",
+      "coarse_class": "Water",
+      "description": "Permanent and seasonal water bodies, lakes, rivers, reservoirs"
+    },
+    "1": {
+      "name": "trees",
+      "coarse_class": "Forest",
+      "description": "Dense and open tree canopy, natural forest, woodland plantations"
+    },
+    "2": {
+      "name": "grass",
+      "coarse_class": "Grass/Shrub",
+      "description": "Natural grasslands, pastures, savannahs, herbaceous cover"
+    },
+    "3": {
+      "name": "flooded_vegetation",
+      "coarse_class": "Water",
+      "description": "Mangroves, wetlands, rice paddies with standing water, marshes"
+    },
+    "4": {
+      "name": "crops",
+      "coarse_class": "Crop",
+      "description": "Cultivated agricultural land, row crops, irrigated fields"
+    },
+    "5": {
+      "name": "shrub_and_scrub",
+      "coarse_class": "Grass/Shrub",
+      "description": "Woody perennials, bushland, scrub, semi-arid thorn vegetation"
+    },
+    "6": {
+      "name": "built",
+      "coarse_class": "Built",
+      "description": "Impervious surfaces, buildings, transportation corridors, industrial structures"
+    },
+    "7": {
+      "name": "bare",
+      "coarse_class": null,
+      "description": "Exposed rock, sand dunes, fallow ground with zero canopy (unrepresented in EuroSAT 10 classes)"
+    },
+    "8": {
+      "name": "snow_and_ice",
+      "coarse_class": null,
+      "description": "Glaciers, seasonal snow cover, ice packs (unrepresented in EuroSAT 10 classes)"
+    }
+  },
+  "contrast_stretch_specification": {
+    "source_dataset": "COPERNICUS/S2_HARMONIZED (TOA Reflectance)",
+    "target_bands": ["B4", "B3", "B2"],
+    "band_order": "RGB",
+    "native_scale_factor": 10000.0,
+    "clip_min_dn": 0,
+    "clip_max_dn": 3500,
+    "clip_min_reflectance": 0.0,
+    "clip_max_reflectance": 0.35,
+    "output_dtype": "uint8",
+    "output_range": [0, 255],
+    "stretch_formula": "uint8_pixel = np.clip((DN / 3500.0) * 255.0, 0, 255).astype(np.uint8)",
+    "documentation": {
+      "eurosat_contrast_matching": "EuroSAT RGB images were constructed by German Research Center for AI (DFKI) from Sentinel-2 Level-1C (TOA) tiles. Raw 12-bit DNs [0, 10000] were clipped to the typical optical surface reflectance range [0, 3000-4000] and linearly scaled to [0, 255]. Our fixed clipping ceiling of DN=3500 (reflectance 0.35) reproduces EuroSAT's mean brightness of ~128 and dynamic range without saturation.",
+      "domain_shift_differences": "EuroSAT images originate from European tiles collected in 2015-2016 under temperate sun-elevation angles. The India shift set introduces distinct agro-ecological conditions (tropical monsoons, arid Rajasthani soil reflectance, intensive Panjabi wheat-rice cycles) and seasonal illumination shifts."
+    }
+  },
+  "sampling_specifications": {
+    "patch_size_pixels": 64,
+    "ground_sampling_distance_m": 10.0,
+    "patch_ground_coverage_m": 640.0,
+    "cloud_filter_max_percentage": 10.0,
+    "minimum_label_purity": 0.80,
+    "target_patches_per_class_per_region_season": 300,
+    "manual_verification_sample_size": 300
+  },
+  "target_regions": {
+    "India": {
+      "tamil_nadu": {
+        "display_name": "Tamil Nadu, India",
+        "bbox": [76.2, 8.0, 80.3, 13.6],
+        "seasons": {
+          "monsoon": {"start": "2023-07-01", "end": "2023-09-30"},
+          "dry": {"start": "2024-01-15", "end": "2024-04-15"}
+        }
+      },
+      "punjab": {
+        "display_name": "Punjab, India",
+        "bbox": [73.8, 29.5, 76.9, 32.5],
+        "seasons": {
+          "monsoon": {"start": "2023-07-01", "end": "2023-09-15"},
+          "dry": {"start": "2024-02-01", "end": "2024-04-30"}
+        }
+      },
+      "rajasthan": {
+        "display_name": "Rajasthan, India",
+        "bbox": [70.0, 24.5, 77.0, 29.5],
+        "seasons": {
+          "monsoon": {"start": "2023-07-15", "end": "2023-09-15"},
+          "dry": {"start": "2024-01-01", "end": "2024-03-31"}
+        }
+      },
+      "kerala": {
+        "display_name": "Kerala, India",
+        "bbox": [74.9, 8.3, 77.4, 12.8],
+        "seasons": {
+          "monsoon": {"start": "2023-06-15", "end": "2023-08-31"},
+          "dry": {"start": "2024-01-01", "end": "2024-03-15"}
+        }
+      }
+    },
+    "Europe_Control": {
+      "central_europe": {
+        "display_name": "Central Europe (Germany / Rhine-Bavaria)",
+        "bbox": [7.5, 47.5, 12.0, 50.5],
+        "seasons": {
+          "summer": {"start": "2023-06-01", "end": "2023-08-31"},
+          "winter": {"start": "2023-12-01", "end": "2024-02-28"}
+        }
+      },
+      "western_europe": {
+        "display_name": "Western Europe (France / Loire-Brittany)",
+        "bbox": [-1.5, 46.0, 3.5, 49.0],
+        "seasons": {
+          "summer": {"start": "2023-06-01", "end": "2023-08-31"},
+          "winter": {"start": "2023-12-01", "end": "2024-02-28"}
+        }
+      },
+      "southern_europe": {
+        "display_name": "Southern Europe (Spain / Andalusia)",
+        "bbox": [-6.0, 36.8, -2.5, 38.5],
+        "seasons": {
+          "summer": {"start": "2023-06-01", "end": "2023-08-31"},
+          "winter": {"start": "2023-12-01", "end": "2024-02-28"}
+        }
+      }
+    }
+  }
+}

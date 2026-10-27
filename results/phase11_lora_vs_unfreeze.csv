@@ -1,0 +1,10 @@
+adaptation_method,config_label,model_name,trainable_params,total_params,trainable_pct,test_accuracy,test_macro_f1,test_loss,best_epoch,avg_epoch_seconds,total_wall_time,peak_vram_mb
+LoRA,LoRA-qkv (r=8),vit_small_patch16_224.augreg_in21k,152074,21821588,0.7,98.47,0.9843,0.0517,3,74.13,332.3,956.0
+LoRA,LoRA-qkv (r=16),vit_small_patch16_224.augreg_in21k,299530,21969044,1.36,98.2,0.9815,0.0516,2,72.44,325.63,957.4
+LoRA,LoRA-all (r=32),vit_small_patch16_224.augreg_in21k,2400778,24070292,9.97,97.65,0.9758,0.0725,3,113.77,502.2,1584.7
+LoRA,LoRA-all (r=64),vit_small_patch16_224.augreg_in21k,4796938,26466452,18.12,97.21,0.9712,0.0865,3,111.47,492.45,1635.5
+Scratch,scratch,vit_small_patch16_224.augreg_in21k,21669514,21669514,100.0,82.49,81.66,0.4951,5,24.4,337.2,450.5
+Layer Freezing,full_ft,vit_small_patch16_224.augreg_in21k,21669514,21669514,100.0,98.96,98.95,0.0392,5,24.4,345.59999999999997,450.5
+Layer Freezing,unfreeze_last_3,vit_small_patch16_224.augreg_in21k,5328010,21669514,24.587584197781272,97.48,97.42,0.0817,5,24.4,332.4,450.5
+Layer Freezing,unfreeze_last_2,vit_small_patch16_224.augreg_in21k,3553546,21669514,16.39882648037238,93.68,93.45,0.1951,5,24.4,46.800000000000004,450.5
+Layer Freezing,linear_probe,vit_small_patch16_224.augreg_in21k,3850,21669514,0.0177668959257692,95.06,94.87,0.149,5,24.4,148.8,450.5

@@ -1,0 +1,113 @@
+{
+    "dataset_name": "EuroSAT_RGB",
+    "total_images": 27000,
+    "num_classes": 10,
+    "classes": [
+        "AnnualCrop",
+        "Forest",
+        "HerbaceousVegetation",
+        "Highway",
+        "Industrial",
+        "Pasture",
+        "PermanentCrop",
+        "Residential",
+        "River",
+        "SeaLake"
+    ],
+    "train_samples": 18899,
+    "val_samples": 2701,
+    "test_samples": 5400,
+    "seed": 42,
+    "class_breakdown": [
+        {
+            "class_id": 0,
+            "class_name": "AnnualCrop",
+            "total_count": 3000,
+            "train_count": 2100,
+            "val_count": 300,
+            "test_count": 600,
+            "test_pct": 20.0
+        },
+        {
+            "class_id": 1,
+            "class_name": "Forest",
+            "total_count": 3000,
+            "train_count": 2100,
+            "val_count": 300,
+            "test_count": 600,
+            "test_pct": 20.0
+        },
+        {
+            "class_id": 2,
+            "class_name": "HerbaceousVegetation",
+            "total_count": 3000,
+            "train_count": 2099,
+            "val_count": 301,
+            "test_count": 600,
+            "test_pct": 20.0
+        },
+        {
+            "class_id": 3,
+            "class_name": "Highway",
+            "total_count": 2500,
+            "train_count": 1750,
+            "val_count": 250,
+            "test_count": 500,
+            "test_pct": 20.0
+        },
+        {
+            "class_id": 4,
+            "class_name": "Industrial",
+            "total_count": 2500,
+            "train_count": 1750,
+            "val_count": 250,
+            "test_count": 500,
+            "test_pct": 20.0
+        },
+        {
+            "class_id": 5,
+            "class_name": "Pasture",
+            "total_count": 2000,
+            "train_count": 1400,
+            "val_count": 200,
+            "test_count": 400,
+            "test_pct": 20.0
+        },
+        {
+            "class_id": 6,
+            "class_name": "PermanentCrop",
+            "total_count": 2500,
+            "train_count": 1750,
+            "val_count": 250,
+            "test_count": 500,
+            "test_pct": 20.0
+        },
+        {
+            "class_id": 7,
+            "class_name": "Residential",
+            "total_count": 3000,
+            "train_count": 2100,
+            "val_count": 300,
+            "test_count": 600,
+            "test_pct": 20.0
+        },
+        {
+            "class_id": 8,
+            "class_name": "River",
+            "total_count": 2500,
+            "train_count": 1750,
+            "val_count": 250,
+            "test_count": 500,
+            "test_pct": 20.0
+        },
+        {
+            "class_id": 9,
+            "class_name": "SeaLake",
+            "total_count": 3000,
+            "train_count": 2100,
+            "val_count": 300,
+            "test_count": 600,
+            "test_pct": 20.0
+        }
+    ]
+}

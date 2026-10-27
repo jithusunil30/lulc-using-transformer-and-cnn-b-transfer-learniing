@@ -1,0 +1,54 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Caches & Environment
+.pytest_cache/
+.coverage
+htmlcov/
+wandb/
+runs/
+*.log
+.env
+.venv/
+env/
+venv/
+
+# Large Datasets & Archives
+data/eurosat/
+data/geographic_shift/
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+
+# Keep dataset configuration and splits
+!data/splits.json
+!data/README.md
+
+# Model Checkpoints & Large Binaries (>50MB)
+checkpoints/*.pth
+checkpoints/*.pt
+*.pth
+*.pt
+*.bin
+*.onnx
+*.safetensors
+
+# Keep checkpoint directory tracking
+!checkpoints/.gitkeep
+!checkpoints/README.md
+
+# OS / Editor Artifacts
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary scratch scripts
+scratch/

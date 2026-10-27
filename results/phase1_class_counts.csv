@@ -1,0 +1,11 @@
+class_id,class_name,total_count,train_count,val_count,test_count,train_pct,val_pct,test_pct
+0,AnnualCrop,3000,2100,450,450,70.0,15.0,15.0
+1,Forest,3000,2100,450,450,70.0,15.0,15.0
+2,HerbaceousVegetation,3000,2099,451,450,69.97,15.03,15.0
+3,Highway,2500,1750,375,375,70.0,15.0,15.0
+4,Industrial,2500,1750,375,375,70.0,15.0,15.0
+5,Pasture,2000,1400,300,300,70.0,15.0,15.0
+6,PermanentCrop,2500,1750,375,375,70.0,15.0,15.0
+7,Residential,3000,2100,450,450,70.0,15.0,15.0
+8,River,2500,1750,375,375,70.0,15.0,15.0
+9,SeaLake,3000,2100,450,450,70.0,15.0,15.0

@@ -1,0 +1,100 @@
+{
+  "models": [
+    {
+      "name": "ViT-Small (Full Fine-Tuning)",
+      "timm_model_id": "vit_small_patch16_224.augreg_in21k",
+      "model_family": "vit",
+      "strategy": "full_ft",
+      "checkpoint_path": "checkpoints/vit_small_patch16_224_augreg_in21k_full_ft_seed42_best.pth",
+      "temperature": 1.2184,
+      "trainable_params": 21669514,
+      "trainable_pct": 100.0,
+      "test_accuracy": 98.96,
+      "description": "Standard fully fine-tuned Vision Transformer. Achieves top in-domain accuracy (98.96%) but requires complete gradient backpropagation across all 21.7M parameters."
+    },
+    {
+      "name": "ViT-Small (Unfreeze Last 3)",
+      "timm_model_id": "vit_small_patch16_224.augreg_in21k",
+      "model_family": "vit",
+      "strategy": "unfreeze_last_3",
+      "checkpoint_path": "checkpoints/vit_small_patch16_224_augreg_in21k_unfreeze_last_3_seed42_best.pth",
+      "temperature": 1.2718,
+      "trainable_params": 5328010,
+      "trainable_pct": 24.59,
+      "test_accuracy": 97.48,
+      "description": "Recommended Pareto-optimal model. Trains only the final 3 transformer blocks (5.3M parameters, 24.6% of backbone), matching full fine-tuning within 1.0% accuracy while saving memory and preserving attribution faithfulness."
+    },
+    {
+      "name": "ViT-Small (Unfreeze Last 2)",
+      "timm_model_id": "vit_small_patch16_224.augreg_in21k",
+      "model_family": "vit",
+      "strategy": "unfreeze_last_2",
+      "checkpoint_path": "checkpoints/vit_small_patch16_224_augreg_in21k_unfreeze_last_2_seed42_best.pth",
+      "temperature": 0.7849,
+      "trainable_params": 3553546,
+      "trainable_pct": 16.40,
+      "test_accuracy": 97.06,
+      "description": "Highly parameter-efficient model unfreezing only the final 2 transformer blocks (3.55M parameters, 16.4%)."
+    },
+    {
+      "name": "ViT-Small (Linear Probe)",
+      "timm_model_id": "vit_small_patch16_224.augreg_in21k",
+      "model_family": "vit",
+      "strategy": "linear_probe",
+      "checkpoint_path": "checkpoints/vit_small_patch16_224_augreg_in21k_linear_probe_seed42_best.pth",
+      "temperature": 0.7922,
+      "trainable_params": 3850,
+      "trainable_pct": 0.02,
+      "test_accuracy": 95.09,
+      "description": "Frozen backbone; trains only the linear classification head (3,850 parameters). Fastest to train, evaluates raw self-supervised representations."
+    },
+    {
+      "name": "DeiT-Small (Full Fine-Tuning)",
+      "timm_model_id": "deit_small_patch16_224.fb_in1k",
+      "model_family": "deit",
+      "strategy": "full_ft",
+      "checkpoint_path": "checkpoints/deit_small_patch16_224_fb_in1k_full_ft_seed42_best.pth",
+      "temperature": 1.0952,
+      "trainable_params": 21669514,
+      "trainable_pct": 100.0,
+      "test_accuracy": 98.44,
+      "description": "Data-efficient Image Transformer (DeiT) distilled backbone, fully fine-tuned."
+    },
+    {
+      "name": "DeiT-Small (Unfreeze Last 3)",
+      "timm_model_id": "deit_small_patch16_224.fb_in1k",
+      "model_family": "deit",
+      "strategy": "unfreeze_last_3",
+      "checkpoint_path": "checkpoints/deit_small_patch16_224_fb_in1k_unfreeze_last_3_seed42_best.pth",
+      "temperature": 0.9150,
+      "trainable_params": 5328010,
+      "trainable_pct": 24.59,
+      "test_accuracy": 96.81,
+      "description": "DeiT-Small with final 3 blocks unfrozen. Preserves strong distillation representations."
+    },
+    {
+      "name": "Swin-Tiny (Full Fine-Tuning)",
+      "timm_model_id": "swin_tiny_patch4_window7_224.ms_in22k",
+      "model_family": "swin",
+      "strategy": "full_ft",
+      "checkpoint_path": "checkpoints/swin_tiny_patch4_window7_224_ms_in22k_full_ft_seed42_best.pth",
+      "temperature": 1.0779,
+      "trainable_params": 27527044,
+      "trainable_pct": 100.0,
+      "test_accuracy": 98.72,
+      "description": "Hierarchical Swin Transformer with shifted windows, fully fine-tuned across all stages (27.5M params)."
+    },
+    {
+      "name": "Swin-Tiny (Unfreeze Last 3)",
+      "timm_model_id": "swin_tiny_patch4_window7_224.ms_in22k",
+      "model_family": "swin",
+      "strategy": "unfreeze_last_3",
+      "checkpoint_path": "checkpoints/swin_tiny_patch4_window7_224_ms_in22k_unfreeze_last_3_seed42_best.pth",
+      "temperature": 1.0307,
+      "trainable_params": 15969574,
+      "trainable_pct": 58.01,
+      "test_accuracy": 97.63,
+      "description": "Hierarchical Swin Transformer with final 3 blocks unfrozen."
+    }
+  ]
+}

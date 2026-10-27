@@ -1,0 +1,2 @@
+model_name,strategy,seed,run1_accuracy,run2_accuracy,accuracy_delta,run1_f1,run2_f1,f1_delta,run1_loss,run2_loss,loss_delta,tolerance_threshold,is_reproducible,rerun_total_seconds
+vit_small_patch16_224.augreg_in21k,unfreeze_last_3,42,97.48,97.28,0.196,97.42,97.2022,0.2178,0.0817,0.0839,0.0022,0.25,True,710.97

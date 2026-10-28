@@ -11,6 +11,7 @@ grad-cam>=1.5.0
 
 # Web Application & Interactive UI
 gradio>=6.0.0
+streamlit>=1.30.0
 plotly>=6.0.0
 
 # Scientific Computing & Metrics

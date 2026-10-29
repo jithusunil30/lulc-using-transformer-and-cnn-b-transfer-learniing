@@ -213,7 +213,7 @@ if nav_selection == "🔍 Classify Patch":
     with col_output:
         st.subheader("3. Model Prediction & Attribution")
         if input_img is not None:
-            if run_classify or "patch_pred_cache" not in st.session_state:
+            if run_classify:
                 with st.spinner("Executing calibrated inference and computing attribution gradients..."):
                     pred = predict_patch(active_model, input_img, apply_calibration=True)
                     attr_map = generate_attribution_map(active_model, input_img, method=active_method)
@@ -226,7 +226,9 @@ if nav_selection == "🔍 Classify Patch":
             pred = st.session_state.get("patch_pred_cache")
             overlay_img = st.session_state.get("patch_overlay_cache")
 
-            if pred:
+            if pred is None:
+                st.info("👆 Select a patch or upload an image, then click **'🚀 Run Inference & Explain'**.")
+            else:
                 # Warning banner or success banner
                 if pred["is_low_confidence"]:
                     st.markdown(
@@ -343,7 +345,7 @@ elif nav_selection == "🗺️ Land-Cover Map":
     with col_scene_out:
         st.subheader("3. Classification Map & Confidence Heatmap")
         if scene_img is not None:
-            if run_map_btn or "scene_res_cache" not in st.session_state:
+            if run_map_btn:
                 with st.spinner("Tiling scene, running batched CPU inference, and synthesizing maps..."):
                     res = tile_and_predict_scene(map_model, scene_img, tile_size=64, stride=map_stride, apply_calibration=True)
                     st.session_state["scene_res_cache"] = res
@@ -351,7 +353,9 @@ elif nav_selection == "🗺️ Land-Cover Map":
 
             res = st.session_state.get("scene_res_cache")
 
-            if res:
+            if res is None:
+                st.info("👈 Select a scene, then click **'🧭 Generate Land-Cover Map'**.")
+            else:
                 m_tab1, m_tab2 = st.tabs(["Color-Coded Classification Map", "Calibrated Confidence Heatmap (Plasma)"])
                 with m_tab1:
                     st.image(res["blended_map"], caption=f"Spatial LULC Map ({res['total_tiles']} Tiles: {res['n_rows']}x{res['n_cols']})", use_container_width=True)
@@ -478,29 +482,32 @@ elif nav_selection == "⚖️ Model Comparison":
     with c_right:
         st.subheader("Side-by-Side Architectural Evaluation")
         if cmp_img is not None:
-            models_to_compare = MODELS_LIST[:4]
-            cmp_cols = st.columns(len(models_to_compare))
+            if run_cmp:
+                models_to_compare = MODELS_LIST[:4]
+                cmp_cols = st.columns(len(models_to_compare))
 
-            with st.spinner("Computing predictions and attribution heatmaps across all backbones..."):
-                for idx, m_name in enumerate(models_to_compare):
-                    with cmp_cols[idx]:
-                        m_pred = predict_patch(m_name, cmp_img, apply_calibration=True)
-                        m_attr = generate_attribution_map(m_name, cmp_img, method=cmp_method)
-                        m_overlay = render_attribution_overlay(cmp_img, m_attr, use_95th_percentile=False)
+                with st.spinner("Computing predictions and attribution heatmaps across all backbones..."):
+                    for idx, m_name in enumerate(models_to_compare):
+                        with cmp_cols[idx]:
+                            m_pred = predict_patch(m_name, cmp_img, apply_calibration=True)
+                            m_attr = generate_attribution_map(m_name, cmp_img, method=cmp_method)
+                            m_overlay = render_attribution_overlay(cmp_img, m_attr, use_95th_percentile=False)
 
-                        st.image(m_overlay, use_container_width=True)
-                        st.markdown(
-                            f"""
-                            <div style="background: white; border: 1px solid #E2E8F0; border-radius: 8px; padding: 10px; margin-top: 6px;">
-                                <strong style="color: #1E293B; font-size: 0.95rem;">{m_name}</strong><br>
-                                <span style="font-size: 0.85rem; color: #64748B;">Pred: <strong>{m_pred['top_class']}</strong></span><br>
-                                <span style="font-size: 0.85rem; color: #64748B;">Coarse: <strong>{m_pred['coarse_class']}</strong></span><br>
-                                <span style="font-size: 0.85rem; color: #2563EB;">Confidence: <strong>{m_pred['max_conf']*100:.1f}%</strong></span><br>
-                                <span style="font-size: 0.75rem; color: #94A3B8;">Trainable: {m_pred.get('trainable_pct', 24.6):.1f}% | T={m_pred['temperature']:.2f}</span>
-                            </div>
-                            """,
-                            unsafe_allow_html=True
-                        )
+                            st.image(m_overlay, use_container_width=True)
+                            st.markdown(
+                                f"""
+                                <div style="background: white; border: 1px solid #E2E8F0; border-radius: 8px; padding: 10px; margin-top: 6px;">
+                                    <strong style="color: #1E293B; font-size: 0.95rem;">{m_name}</strong><br>
+                                    <span style="font-size: 0.85rem; color: #64748B;">Pred: <strong>{m_pred['top_class']}</strong></span><br>
+                                    <span style="font-size: 0.85rem; color: #64748B;">Coarse: <strong>{m_pred['coarse_class']}</strong></span><br>
+                                    <span style="font-size: 0.85rem; color: #2563EB;">Confidence: <strong>{m_pred['max_conf']*100:.1f}%</strong></span><br>
+                                    <span style="font-size: 0.75rem; color: #94A3B8;">Trainable: {m_pred.get('trainable_pct', 24.6):.1f}% | T={m_pred['temperature']:.2f}</span>
+                                </div>
+                                """,
+                                unsafe_allow_html=True
+                            )
+            else:
+                st.info("👈 Select a patch and attribution method, then click **'⚡ Compare All Models'**.")
 
 
 # ==============================================================================

@@ -145,9 +145,22 @@ def generate_attribution_map(
 
     method_clean = method.lower()
 
-    # Temporarily ensure gradients are enabled on model parameters for backward hooks
-    orig_grad_states = [p.requires_grad for p in model.parameters()]
-    for p in model.parameters():
+    # Memory optimization: only enable gradients for final block and head for Grad-CAM
+    cam_active_params = []
+    if "grad-cam" in method_clean:
+        if hasattr(model, "head") and model.head is not None:
+            cam_active_params.extend(list(model.head.parameters()))
+        if hasattr(model, "norm") and model.norm is not None:
+            cam_active_params.extend(list(model.norm.parameters()))
+        if fam in ["vit", "deit"] and hasattr(model, "blocks"):
+            cam_active_params.extend(list(model.blocks[-1].parameters()))
+        elif fam == "swin" and hasattr(model, "layers"):
+            cam_active_params.extend(list(model.layers[-1].blocks[-1].parameters()))
+        elif hasattr(model, "stages"):
+            cam_active_params.extend(list(model.stages[-1].blocks[-1].parameters()))
+
+    orig_grad_states = [(p, p.requires_grad) for p in cam_active_params]
+    for p in cam_active_params:
         p.requires_grad = True
 
     try:
@@ -176,7 +189,6 @@ def generate_attribution_map(
             if fam in ["vit", "deit"]:
                 attr_2d = compute_attention_rollout(model, input_tensor)
             else:
-                # Fallback to Grad-CAM for Swin or non-standard ViT
                 target_layers = get_gradcam_target_layers(model, "swin")
                 reshape_tf = get_gradcam_reshape_tf("swin")
                 cam = GradCAM(model=model, target_layers=target_layers, reshape_transform=reshape_tf)
@@ -185,8 +197,10 @@ def generate_attribution_map(
         else:
             raise ValueError(f"Unknown explanation method: {method}")
     finally:
-        for p, state in zip(model.parameters(), orig_grad_states):
+        for p, state in orig_grad_states:
             p.requires_grad = state
+        import gc
+        gc.collect()
 
     # Min-max normalize to [0, 1]
     amin, amax = attr_2d.min(), attr_2d.max()
